@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "myProfile";
+}
+
+<h2>myProfile</h2>
+
+<!-- User Info Section -->
+<section class="profile-section">
+    <div class="profile-image">Profile Image</div>
+    <div class="user-info">
+        <h3>User Name</h3>
+        <p>Email: user@example.com</p>
+        <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div>
+            <button class="btn btn-outline-dark">Edit Profile</button>
+            <button class="btn btn-dark">Button</button>
+        </div>
+    </div>
+</section>
+
+<!-- Tabs Section -->
+<section class="tabs-section">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" type="button" role="tab" aria-controls="posts" aria-selected="true">Posts</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="followers-tab" data-bs-toggle="tab" data-bs-target="#followers" type="button" role="tab" aria-controls="followers" aria-selected="false">Followers</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="following-tab" data-bs-toggle="tab" data-bs-target="#following" type="button" role="tab" aria-controls="following" aria-selected="false">Following</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <!-- Posts Tab -->
+        <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+            <div class="card-container">
+                <div class="card mb-3 mx-3" style="width: 18rem;">
+                    <img src="sample-image.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text" style="height: 75px; overflow: hidden;">Some quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-dark">Read More</a>
+                    </div>
+                    <div class="rating-static mx-3 my-3">
+                        <span class="star filled"></span>
+                        <span class="star filled"></span>
+                        <span class="star filled"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </div>
+                </div>
+                <div class="card mb-3 mx-3" style="width: 18rem;">
+                    <img src="sample-image.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text" style="height: 75px; overflow: hidden;">Some quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+                <div class="card mb-3 mx-3" style="width: 18rem;">
+                    <img src="sample-image.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text" style="height: 75px; overflow: hidden;">Some quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+                <div class="card mb-3 mx-3" style="width: 18rem;">
+                    <img src="sample-image.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text" style="height: 75px; overflow: hidden;">Some quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+                <div class="card mb-3 mx-3" style="width: 18rem;">
+                    <img src="sample-image.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text" style="height: 75px; overflow: hidden;">Some quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Followers Tab -->
+        <div class="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="followers-tab">
+            <ul class="user-list">
+                <li class="d-flex align-items-center justify-content-between">
+                    <img src="sample-image.jpg" alt="User 1" class="me-3 rounded-circle" style="width: 40px; height: 40px;">
+                    <div class="flex-grow-1">sandip babar</div>
+                    <button type="button" class="btn btn-dark">Follow</button>
+                </li>
+                <hr>
+                <li class="d-flex align-items-center justify-content-between">
+                    <img src="sample-image.jpg" alt="User 1" class="me-3 rounded-circle" style="width: 40px; height: 40px;">
+                    <div class="flex-grow-1">sandip babar</div>
+                    <button type="button" class="btn btn-dark">Follow</button>
+                </li>
+                <hr>
+                <li class="d-flex align-items-center justify-content-between">
+                    <img src="sample-image.jpg" alt="User 1" class="me-3 rounded-circle" style="width: 40px; height: 40px;">
+                    <div class="flex-grow-1">sandip babar</div>
+                    <button type="button" class="btn btn-dark">Follow</button>
+                </li>
+                <hr>
+                <li class="d-flex align-items-center justify-content-between">
+                    <img src="sample-image.jpg" alt="User 1" class="me-3 rounded-circle" style="width: 40px; height: 40px;">
+                    <div class="flex-grow-1">sandip babar</div>
+                    <button type="button" class="btn btn-dark">Follow</button>
+                </li>
+                <hr>
+                <li class="d-flex align-items-center justify-content-between">
+                    <img src="sample-image.jpg" alt="User 1" class="me-3 rounded-circle" style="width: 40px; height: 40px;">
+                    <div class="flex-grow-1">sandip babar</div>
+                    <button type="button" class="btn btn-dark">Follow</button>
+                </li>
+                <hr>
+            </ul>
+</div>
+
+        <!-- Following Tab -->
+        <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
+                <ul class="user-list">
+                    <li class="d-flex align-items-center justify-content-between">
+                        <img src="sample-image.jpg" alt="User 1" class="me-3 rounded-circle" style="width: 40px; height: 40px;">
+                        <div class="flex-grow-1">sandip babar</div>
+                        <button type="button" class="btn btn-dark">Follow</button>
+                    </li>
+                    <hr>
+                    <li class="d-flex align-items-center justify-content-between">
+                        <img src="sample-image.jpg" alt="User 1" class="me-3 rounded-circle" style="width: 40px; height: 40px;">
+                        <div class="flex-grow-1">sandip babar</div>
+                        <button type="button" class="btn btn-dark">Follow</button>
+                    </li>
+                    <hr>
+                    <li class="d-flex align-items-center justify-content-between">
+                        <img src="sample-image.jpg" alt="User 1" class="me-3 rounded-circle" style="width: 40px; height: 40px;">
+                        <div class="flex-grow-1">sandip babar</div>
+                        <button type="button" class="btn btn-dark">Follow</button>
+                    </li>
+                    <hr>
+                    <li class="d-flex align-items-center justify-content-between">
+                        <img src="sample-image.jpg" alt="User 1" class="me-3 rounded-circle" style="width: 40px; height: 40px;">
+                        <div class="flex-grow-1">sandip babar</div>
+                        <button type="button" class="btn btn-dark">Follow</button>
+                    </li>
+                    <hr>
+                    <li class="d-flex align-items-center justify-content-between">
+                        <img src="sample-image.jpg" alt="User 1" class="me-3 rounded-circle" style="width: 40px; height: 40px;">
+                        <div class="flex-grow-1">sandip babar</div>
+                        <button type="button" class="btn btn-dark">Follow</button>
+                    </li>
+                    <hr>
+                </ul>
+        </div>
+    </div>
+</section>
+

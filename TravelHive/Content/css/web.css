@@ -1,0 +1,166 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-top: 80px;
+    background-color: #e9ecef;
+}
+
+.navbar {
+    background-color: #343a40;
+    padding: 10px 15px;
+    position: fixed;
+    top: 0;
+    z-index: 1030;
+    width: 100%;
+    border-bottom: 2px solid orange;
+}
+
+    .navbar .nav-link, .navbar .navbar-brand {
+        color: white !important;
+        font-size: 18px;
+    }
+
+        .navbar .nav-link:hover {
+            color: #007bff !important;
+        }
+
+    .navbar .btn {
+        font-size: 16px;
+    }
+
+.bodyclass {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    width: 300px;
+    height: 90vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+    .sidebar h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+.search-bar {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+    .search-bar input {
+        width: 100%;
+        padding: 10px 40px 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        font-size: 16px;
+    }
+
+    .search-bar i {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        color: #6c757d;
+        font-size: 20px;
+    }
+
+.user-list {
+    list-style: none;
+    padding: 0;
+}
+
+    .user-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+
+    .user-list img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .user-list .name {
+        font-size: 16px;
+    }
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #e9ecef;
+    margin-left: 20%;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #666;
+    margin-right: 20px;
+}
+
+.user-info {
+    flex: 1;
+}
+
+    .user-info h3 {
+        margin-bottom: 10px;
+    }
+
+.tabs-section {
+    padding: 20px;
+}
+
+.tab-content {
+    margin-top: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+/*Rating stars design*/
+.rating-static {
+    display: flex;
+    direction: row;
+    gap: 5px;
+}
+
+.star {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-color: #ddd;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+    .star.filled {
+        background-color: gold;
+    }

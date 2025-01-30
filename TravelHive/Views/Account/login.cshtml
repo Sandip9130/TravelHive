@@ -1,0 +1,95 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>login</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/css/web.css" rel="stylesheet" />
+    <style>
+        .loginBox{
+            padding: 30px;
+            margin-top:200px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Model for login-signup -->
+    
+    <div class="modal-dialog modal-dialog-centered w-25 border-3 shadow rounded loginBox">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalToggleLabel"><b>LOG IN</b></h4>
+            </div>
+            <hr />
+            <div class="modal-body">
+                <form class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email address or Username</label>
+                        <input type="email" class="form-control mw-100" id="exampleFormControlInput1 validationCustom05" placeholder="name@example.com" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid E-mail or Username.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Pasasword</label>
+                        <input type="password" class="form-control mw-100" id="exampleFormControlInput2 validationCustom06" placeholder="password" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid password.
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-dark">LOGIN</button>
+                    </div>
+                    <hr />
+                </form>
+            </div>
+            <div class="modal-footer">
+                @*<a class="btn btn-link" href="~/Views/Account/signup.cshtml">Don't have an account? Register Now</a>*@
+                @Html.ActionLink(
+linkText: "Don't have an account? Register Now",
+actionName: "signup",
+controllerName: "Account",
+routeValues: null,
+htmlAttributes: new { @class = "btn btn-link" })
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+
+
+
+
+</body>
+</html>

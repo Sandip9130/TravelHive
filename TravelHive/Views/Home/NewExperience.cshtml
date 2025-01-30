@@ -1,0 +1,492 @@
+﻿@model TravelHive.Models.ExperienceDetail
+@{
+    ViewBag.Title = "NewExperience";
+}
+
+<h2>NewExperience</h2>
+<br />
+<div class="container mt-5">
+    <!-- Progress Bar -->
+    <div class="progress mb-4">
+        <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20% completed</div>
+    </div>
+
+    <!-- Form -->
+    <form id="multiStepForm" class="needs-validation" novalidate>
+        <!-- Step 1 -->
+        <div class="step" id="step1">
+            <h4>Step 1: Basic Details</h4>
+            <div class="mb-3 mw-100">
+                <label for="placeName" class="form-label">Place Name</label>
+                @Html.EditorFor(model => model.place_name, new { htmlAttributes = new { @class = "form-control mw-100", id = "placeName", placeholder = "Enter place name", required = "required" } })
+                @*<input type="text" class="form-control mw-100" id="placeName" placeholder="Enter place name" required>*@
+                <div class="invalid-feedback">Please provide the place name.</div>
+            </div>
+            <div class="mb-3">
+                <label for="country" class="form-label">Country/Region</label>
+                <select class="form-select mw-100" id="country" required>
+                    <option value="">Select a country</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <!-- Add more countries -->
+                </select>
+                <div class="invalid-feedback">Please select a country/region.</div>
+            </div>
+            <div class="mb-3">
+                <label for="typeOfPlace" class="form-label">Type of Place</label>
+                @Html.EditorFor(model => model.type_of_place, new { htmlAttributes = new { @class = "form-control mw-100", id = "typeOfPlace", placeholder = "e.g., Historical site, beach", required = "required" } })
+                @*<input type="text" class="form-control mw-100" id="typeOfPlace" placeholder="e.g., Historical site, beach" required>*@
+                <div class="invalid-feedback">Please specify the type of place.</div>
+            </div>
+        </div>
+
+        <!-- Step 2 (hidden initially) -->
+        <div class="step d-none" id="step2">
+            <h4>Step 2: Experience Details</h4>
+            <div class="mb-3">
+                <label for="titleOfExperience" class="form-label">Title of Experience</label>
+                @Html.EditorFor(model => model.Experience_title, new { htmlAttributes = new { @class = "form-control mw-100", id = "titleOfExperience", placeholder = "Enter a catchy title", required = "required" } })
+                @*<input type="text" class="form-control mw-100" id="titleOfExperience" placeholder="Enter a catchy title" required>*@
+                <div class="invalid-feedback">Please provide a title for your experience.</div>
+            </div>
+            <div class="mb-3">
+                <label for="personalStory" class="form-label">Personal Experience/Story</label>
+                <textarea class="form-control mw-100" id="personalStory" rows="4" placeholder="Detailed opinion about this place" required></textarea>
+                <div class="invalid-feedback">Please share your experience.</div>
+            </div>
+            <div class="mb-3">
+                <label for="durationOfVisit" class="form-label">Duration of Visit</label>
+                @Html.EditorFor(model => model.duration_of_visit, new { htmlAttributes = new { @class = "form-control mw-100", id = "durationOfVisit", placeholder = "e.g., Half-day, Full-day, Multi-days, sevral-hours", required = "required" } })
+                @*<input type="text" class="form-control mw-100" id="durationOfVisit" placeholder="e.g., Half-day, Full-day, Multi-days, sevral-hours" required>*@
+                <div class="invalid-feedback">Please specify the duration of your visit.</div>
+            </div>
+            <div class="d-flex flex-row mb-3">
+                <h6 class="pt-3">Best time to visit:</h6>
+                <div class="mx-5">
+                    <label for="StartMonth" class="form-label">Start Month</label>
+                    @Html.DropDownListFor(model => model.season_start,
+        new SelectList(new List<SelectListItem>
+        {
+            new SelectListItem { Value = "", Text = "Select a month" },
+            new SelectListItem { Value = "1", Text = "January" },
+            new SelectListItem { Value = "2", Text = "February" },
+            new SelectListItem { Value = "3", Text = "March" },
+            new SelectListItem { Value = "4", Text = "April" },
+            new SelectListItem { Value = "5", Text = "May" },
+            new SelectListItem { Value = "6", Text = "June" },
+            new SelectListItem { Value = "7", Text = "July" },
+            new SelectListItem { Value = "8", Text = "August" },
+            new SelectListItem { Value = "9", Text = "September" },
+            new SelectListItem { Value = "10", Text = "October" },
+            new SelectListItem { Value = "11", Text = "November" },
+            new SelectListItem { Value = "12", Text = "December" }
+        }, "Value", "Text"),
+        "Select a month",
+        new { @class = "form-select mw-75", id = "Smonth", @required = "required" })
+                    <!--<label for="StartMonth" class="form-label">Start Month</label>
+    <select class="form-select mw-75" id="Smonth" required>
+        <option value="">Select a month</option>
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">Octomber</option>
+        <option value="11">November</option>
+        <option value="12">december</option>-->
+                    <!-- Add more countries -->
+                    <!--</select>-->
+                    <div class="invalid-feedback">Please select a month.</div>
+                </div>
+
+                <div class="mx-5">
+                    <label for="EndMonth" class="form-label">End Month</label>
+                            @Html.DropDownListFor(model => model.season_end,
+        new SelectList(new List<SelectListItem>
+        {
+        new SelectListItem { Value = "", Text = "Select a month" },
+        new SelectListItem { Value = "1", Text = "January" },
+        new SelectListItem { Value = "2", Text = "February" },
+        new SelectListItem { Value = "3", Text = "March" },
+        new SelectListItem { Value = "4", Text = "April" },
+        new SelectListItem { Value = "5", Text = "May" },
+        new SelectListItem { Value = "6", Text = "June" },
+        new SelectListItem { Value = "7", Text = "July" },
+        new SelectListItem { Value = "8", Text = "August" },
+        new SelectListItem { Value = "9", Text = "September" },
+        new SelectListItem { Value = "10", Text = "October" },
+        new SelectListItem { Value = "11", Text = "November" },
+        new SelectListItem { Value = "12", Text = "December" }
+        }, "Value", "Text"),
+        "Select a month",
+        new { @class = "form-select mw-75", id = "Emonth", @required = "required" })
+                    <!--<select class="form-select mw-75" id="Emonth" required>
+        <option value="">Select a month</option>
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">Octomber</option>
+        <option value="11">November</option>
+        <option value="12">december</option>-->
+                    <!-- Add more countries -->
+                    <!--</select>-->
+                    <div class="invalid-feedback">Please select a month.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Recommendations (For Better User Guidance) -->
+        <div class="step d-none" id="step2">
+            <h4>Step 3: Recommendations (For Better User Guidance)</h4>
+            <!-- Must-See Highlights -->
+            <div class="mb-3">
+                <label for="highlights" class="form-label">Must-See Highlights</label>
+                @Html.TextAreaFor(model => model.must_see_heighlit,
+            new
+            {
+            @id = "highlights",
+            @class = "form-control mw-100",
+            @rows = "3",
+            @placeholder = "Key attractions or activities at the place",
+            @required = "required"
+            })
+                @*<textarea id="highlights" class="form-control mw-100" rows="3" placeholder="Key attractions or activities at the place" required></textarea>*@
+                <div class="invalid-feedback">Please provide a Must-See Highlights.</div>
+            </div>
+
+            <!-- Do's and Don'ts -->
+            <div class="mb-3">
+                <label for="dos-donts" class="form-label">Do’s and Don’ts</label>
+                            @Html.TextAreaFor(model => model.Dos_and_Donts,
+            new
+            {
+            @id = "dos-donts",
+            @class = "form-control mw-100",
+            @rows = "3",
+            @placeholder = "Suggestions for new visitors (e.g., dress codes, safety tips)",
+            @required = "required"
+            })
+                @*<textarea id="dos-donts" class="form-control mw-100" rows="3" placeholder="Suggestions for new visitors (e.g., dress codes, safety tips)" required></textarea>*@
+                <div class="invalid-feedback">Please provide Do’s and Don’ts.</div>
+            </div>
+
+            <!-- Nearby Attractions -->
+            <div class="mb-3">
+                <label for="nearby-attractions" class="form-label">Nearby Attractions</label>
+                            @Html.TextAreaFor(model => model.nearby_attraction,
+            new
+            {
+            @id = "nearby-attractions",
+            @class = "form-control mw-100",
+            @rows = "3",
+            @placeholder = "nearby-attractions",
+            @required = "required"
+            })
+                @*<textarea id="nearby-attractions" class="form-control mw-100" rows="3" placeholder="Optional: Suggest nearby places"></textarea>*@
+                <div class="invalid-feedback">Please provide Nearby Attractions.</div>
+            </div>
+
+            <!-- Budget/Cost Details -->
+            <div class="mb-3">
+                <label for="budget-details" class="form-label">Budget/Cost Details</label>
+                            @Html.TextAreaFor(model => model.budget,
+            new
+            {
+            @id = "budget-details",
+            @class = "form-control mw-100",
+            @rows = "3",
+            @placeholder = "Approximate cost of activities, accommodation, food, etc.",
+            @required = "required"
+            })
+                @*<textarea id="budget-details" class="form-control mw-100" rows="3" placeholder="Approximate cost of activities, accommodation, food, etc." required></textarea>*@
+                <div class="invalid-feedback">Please provide Budget/Cost Details.</div>
+            </div>
+        </div>
+
+        <!-- Step 4: Ratings and Reviews (Structured Data) -->
+        <div class="step d-none" id="step2">
+            <h4>Step 4: Ratings and Reviews (Structured Data)</h4>
+            <div class="d-flex flex-row mb-3">
+                <div class="mx-5">
+                    <label for="Placerating" class="form-label">Satisfaction</label>
+
+
+                                    @Html.DropDownListFor(model => model.satisfaction,
+                new SelectList(new List<SelectListItem>
+                {
+                new SelectListItem { Value = "", Text = "Rate out of 5" },
+                new SelectListItem { Value = "1", Text = "1" },
+                new SelectListItem { Value = "2", Text = "2" },
+                new SelectListItem { Value = "3", Text = "3" },
+                new SelectListItem { Value = "4", Text = "4" },
+                new SelectListItem { Value = "5", Text = "5" }
+                }, "Value", "Text"),
+                "Satisfaction",
+                new { @class = "form-select mw-75", id = "r1", @required = "required" })
+
+
+
+                    @*<select class="form-select mw-75" id="r1" required>
+                        <option value="">Rate out of 5</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>*@
+                    <div class="invalid-feedback">Please rate out of 5.</div>
+                </div>
+
+                <div class="mx-5">
+                    <label for="Placerating" class="form-label">Cleanliness</label>
+
+                                    @Html.DropDownListFor(model => model.cleanliness,
+                new SelectList(new List<SelectListItem>
+                {
+                new SelectListItem { Value = "", Text = "Rate out of 5" },
+                new SelectListItem { Value = "1", Text = "1" },
+                new SelectListItem { Value = "2", Text = "2" },
+                new SelectListItem { Value = "3", Text = "3" },
+                new SelectListItem { Value = "4", Text = "4" },
+                new SelectListItem { Value = "5", Text = "5" }
+                }, "Value", "Text"),
+                "Cleanliness",
+                new { @class = "form-select mw-75", id = "r2", @required = "required" })
+
+
+                    @*<select class="form-select mw-75" id="r2" required>
+            <option value="">Rate out of 5</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+
+        </select>*@
+                    <div class="invalid-feedback">Please rate out of 5.</div>
+                </div>
+
+                <div class="mx-5">
+                    <label for="Placerating" class="form-label">Accessibility</label>
+
+                                    @Html.DropDownListFor(model => model.Accessibility,
+                new SelectList(new List<SelectListItem>
+                {
+                new SelectListItem { Value = "", Text = "Rate out of 5" },
+                new SelectListItem { Value = "1", Text = "1" },
+                new SelectListItem { Value = "2", Text = "2" },
+                new SelectListItem { Value = "3", Text = "3" },
+                new SelectListItem { Value = "4", Text = "4" },
+                new SelectListItem { Value = "5", Text = "5" }
+                }, "Value", "Text"),
+                "Accessibility",
+                new { @class = "form-select mw-75", id = "r3", @required = "required" })
+
+
+                    @*<select class="form-select mw-75" id="r3" required>
+            <option value="">Rate out of 5</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>*@
+                    <div class="invalid-feedback">Please rate out of 5.</div>
+                </div>
+
+                <div class="mx-5">
+                    <label for="Placerating" class="form-label">Crowd</label>
+
+                                    @Html.DropDownListFor(model => model.Crowd,
+                new SelectList(new List<SelectListItem>
+                {
+                new SelectListItem { Value = "", Text = "Rate out of 5" },
+                new SelectListItem { Value = "1", Text = "1" },
+                new SelectListItem { Value = "2", Text = "2" },
+                new SelectListItem { Value = "3", Text = "3" },
+                new SelectListItem { Value = "4", Text = "4" },
+                new SelectListItem { Value = "5", Text = "5" }
+                }, "Value", "Text"),
+                "Crowd",
+                new { @class = "form-select mw-75", id = "r4", @required = "required" })
+
+
+                    @*<select class="form-select mw-75" id="r4" required>
+            <option value="">Rate out of 5</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>*@
+                    <div class="invalid-feedback">Please rate out of 5.</div>
+                </div>
+
+                <div class="mx-5">
+                    <label for="Placerating" class="form-label">Food</label>
+
+                                    @Html.DropDownListFor(model => model.Food,
+                new SelectList(new List<SelectListItem>
+                {
+                new SelectListItem { Value = "", Text = "Rate out of 5" },
+                new SelectListItem { Value = "1", Text = "1" },
+                new SelectListItem { Value = "2", Text = "2" },
+                new SelectListItem { Value = "3", Text = "3" },
+                new SelectListItem { Value = "4", Text = "4" },
+                new SelectListItem { Value = "5", Text = "5" }
+                }, "Value", "Text"),
+                "Food",
+                new { @class = "form-select mw-75", id = "r5", @required = "required" })
+
+
+                    @*<select class="form-select mw-75" id="r5" required>
+            <option value="">Rate out of 5</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>*@
+                    <div class="invalid-feedback">Please rate out of 5.</div>
+                </div>
+            </div>
+
+            <h4>Travel Tips</h4>
+            <div class="mb-3">
+                <label for="PackingEssentials" class="form-label">Packing Essentials</label>
+                    @Html.TextAreaFor(model => model.packing_essentials,
+            new
+            {
+            @id = "PackingEssentials",
+            @class = "form-control mw-100",
+            @rows = "3",
+            @placeholder = "Suggestions for items needed for this place.",
+            @required = "required"
+            })
+
+                @*<textarea id="PackingEssentials" class="form-control mw-100" rows="3" placeholder="Suggestions for items needed for this place." required></textarea>*@
+                <div class="invalid-feedback">Please fill out this empty field.</div>
+            </div>
+            <div class="mb-3">
+                <label for="AccessInfo" class="form-label">Accessibility Information</label>
+                    @Html.TextAreaFor(model => model.accessibility_information,
+            new
+            {
+            @id = "AccessInfo",
+            @class = "form-control mw-100",
+            @rows = "3",
+            @placeholder = "(E.g., wheelchair-friendly, public transport availability).",
+            @required = "required"
+            })
+
+                @*<textarea id="AccessInfo" class="form-control mw-100" rows="3" placeholder="(E.g., wheelchair-friendly, public transport availability)." required></textarea>*@
+                <div class="invalid-feedback">Please fill out this empty field.</div>
+            </div>
+            <div class="mb-3">
+                <label for="food&cult" class="form-label">Local Food & Culture</label>
+                @Html.TextAreaFor(model => model.food_and_Cult,
+            new
+            {
+            @id = "food&cult",
+            @class = "form-control mw-100",
+            @rows = "3",
+            @placeholder = "Unique dishes or cultural aspects of the location.",
+            @required = "required"
+            })
+                @*<textarea id="food&cult" class="form-control mw-100" rows="3" placeholder="Unique dishes or cultural aspects of the location." required></textarea>*@
+                <div class="invalid-feedback">Please fill out this empty field.</div>
+            </div>
+        </div>
+
+        <!-- Step 5 Media Uploads -->
+        <div class="step d-none" id="step2">
+            <h4>Step 5: Media Uploads</h4>
+            <div class="d-flex flex-row mb-3">
+                <!-- Image Upload -->
+                <div class="mb-3 mx-3 ">
+                    <label for="images" class="form-label fw-bold">Upload Images</label>
+
+                    @*<input type="file" id="images" class="form-control" accept="image/*" required>*@
+                    <div class="invalid-feedback">Please upload some images.</div>
+                    <input type="file" id="images" class="form-control" accept="image/*" required>
+                    <div class="invalid-feedback">Please upload some images.</div>
+                    <input type="file" id="images" class="form-control" accept="image/*" required>
+                    <div class="invalid-feedback">Please upload some images.</div>
+                    <input type="file" id="images" class="form-control" accept="image/*" required>
+                    <div class="invalid-feedback">Please upload some images.</div>
+                </div>
+            </div>
+                <!-- Video Upload -->
+                <div class="mb-3">
+                    <label for="videos" class="form-label fw-bold">Upload Video</label>
+                    <input type="file" id="videos" class="form-control" accept="video/*" required>
+                    <div class="invalid-feedback">Please upload video.</div>
+                </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="d-flex justify-content-between mt-4">
+            <button type="button" class="btn btn-secondary d-none" id="prevBtn">Previous</button>
+            <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+        </div>
+    </form>
+</div>
+
+<script>
+        const steps = document.querySelectorAll('.step');
+        const progressBar = document.getElementById('progressBar');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let currentStep = 0;
+
+        function showStep(step) {
+            steps.forEach((s, index) => {
+                s.classList.toggle('d-none', index !== step);
+            });
+            progressBar.style.width = `${((step + 1) / steps.length) * 100}%`;
+            progressBar.textContent = `${(step + 1) * 20}% Completed`;
+            prevBtn.classList.toggle('d-none', step === 0);
+            nextBtn.textContent = step === steps.length - 1 ? 'Submit' : 'Next';
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const currentForm = steps[currentStep].querySelectorAll('input, select, textarea');
+            let isValid = true;
+            currentForm.forEach(field => {
+                if (!field.checkValidity()) {
+                    field.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            });
+            if (isValid) {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                } else {
+                    document.getElementById('multiStepForm').submit();
+                }
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        showStep(currentStep);
+</script>
+

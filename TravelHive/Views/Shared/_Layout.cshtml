@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/css/web.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <!-- Navbar content -->
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex flex-row align-items-center justify-content-center" href="#">
+                <img src="~/images/site_logo.png" alt="" width="200" height="50" class="d-inline-block align-text-top">
+            </a>
+
+            <ul class="nav justify-content-center align-items-center">
+                <li class="nav-item">
+                                            @Html.ActionLink(
+                        linkText: "Explore",
+                        actionName: "Index",
+                        controllerName: "Home",
+                        routeValues: null,
+                        htmlAttributes: new { @class = "nav-link"})
+
+                    @*<a class="nav-link" href="index.html">Explore</a>*@
+                </li>
+                <li class="nav-item">
+                    <div class="d-flex flex-row align-items-center justify-content-center">
+                        <a href="@Url.Action("NewExperience", "Home")" class="nav-link d-flex align-items-center">
+                            <div class="bg-warning rounded-circle px-2 text-dark"><b>+</b></div>
+                            <span class="ms-2">New Experience</span>
+                        </a>
+                    </div>
+
+                    @*<div class="d-flex flex-row align-items-center justify-content-center">
+            <div class="bg-warning rounded-circle px-2 text-dark"><b> + </b></div>
+                                    @Html.ActionLink(
+            linkText: "New Experience",
+            actionName: "NewExperience",
+            controllerName: "Home",
+            routeValues: null,
+            htmlAttributes: new { @class = "nav-link" })
+        </div>*@
+                </li>
+                <li class="nav-item">
+                                        @Html.ActionLink(
+                        linkText: "My Profile",
+                        actionName: "myProfile",
+                        controllerName: "Home",
+                        routeValues: null,
+                        htmlAttributes: new { @class = "nav-link"})
+
+                    @*<a class="nav-link active" aria-current="page" href="../Home/myProfile.cshtml">My Profile</a>*@
+                </li>
+            </ul>
+            <div>
+                @*<button class="btn btn-outline-light" data-bs-toggle="modal" href="~/Views/Account/login.cshtml" role="button">Login</button>*@
+                @Html.ActionLink(
+linkText: "Login",
+actionName: "login",
+controllerName: "Account",
+routeValues: null,
+htmlAttributes: new { @class = "btn btn-outline-light" })
+
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    
+
+
+
+
+    <div class="container-fluid bodyclass">
+        <div class="sidebar bg-dark text-light">
+            <h2>Explore Travellers</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="Search travellers...">
+                <i class="bi bi-search"></i>
+            </div>
+            <ul class="user-list">
+                <!-- User list dynamically generated -->
+                @{
+                    // Retrieve the list of users from the session
+                    var usersList = Session["usersList"] as List<TravelHive.Models.User>; // Replace string with the appropriate type
+
+                    if (usersList != null)
+                    {
+                        foreach (var user in usersList)
+                        {
+                                <li>
+                                    <img src="@Url.Content(user.profile_photo)" alt="User 1">
+                                    <div class="name">@user.first_name @user.last_name</div>
+                                </li>
+                            <hr>
+                            
+                        }
+                    }
+                    else
+                    {
+                        <li>Users not found !</li>
+                    }
+                }
+
+                
+                <!-- Add remaining users dynamically or copy structure above -->
+            </ul>
+        </div>
+
+        <div class="content container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+    </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>
