@@ -7,11 +7,11 @@
 
 <!-- User Info Section -->
 <section class="profile-section">
-    <div class="profile-image">Profile Image</div>
+    <div class="profile-image"><img src="@Url.Content(ViewBag.userdetail.profile_photo)" style="height: 100%; width: 100%"/></div>
     <div class="user-info">
-        <h3>User Name</h3>
-        <p>Email: user@example.com</p>
-        <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h3>@ViewBag.userdetail.first_name @ViewBag.userdetail.last_name</h3>
+        <p>Email: @ViewBag.userdetail.email</p>
+        <p>Bio: @ViewBag.userdetail.bio</p>
         <div>
             <button class="btn btn-outline-dark">Edit Profile</button>
             <button class="btn btn-dark">Button</button>
@@ -42,13 +42,6 @@
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text" style="height: 75px; overflow: hidden;">Some quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's content.</p>
                         <a href="#" class="btn btn-dark">Read More</a>
-                    </div>
-                    <div class="rating-static mx-3 my-3">
-                        <span class="star filled"></span>
-                        <span class="star filled"></span>
-                        <span class="star filled"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
                     </div>
                 </div>
                 <div class="card mb-3 mx-3" style="width: 18rem;">

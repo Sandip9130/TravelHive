@@ -30,7 +30,7 @@
                 @using (Html.BeginForm("signup", "Account", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
                 {
                     @*@using (Html.BeginForm())
-            <form class="needs-validation" novalidate>*@
+                        <form class="needs-validation" novalidate>*@
                     <div class="mb-3">
                         <!-- <label for="validationCustom01" class="form-label">First name</label> -->
                         @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @class = "form-control mw-100", id = "validationCustom01", placeholder = "First name", required = "required" } })
@@ -88,20 +88,20 @@
                     <div>
                         <input class="btn btn-dark" type="submit" value="Register" />
                     </div>
-                    
-                        if (ViewBag.insertMessage != null)
-                        {
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">
-                                @Html.Raw(ViewBag.insertMessage)
-                            </div>
-                        }
-                        else if (TempData["insertMessage"] != null)
-                        {
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">
-                                @Html.Raw(TempData["insertMessage"])
-                            </div>
-                        }
-                    
+
+                    if (ViewBag.insertMessage != null)
+                    {
+                        <div class="alert alert-danger mt-2 mb-0" role="alert">
+                            @Html.Raw(ViewBag.insertMessage)
+                        </div>
+                    }
+                    else if (TempData["insertMessage"] != null)
+                    {
+                        <div class="alert alert-danger mt-2 mb-0" role="alert">
+                            @Html.Raw(TempData["insertMessage"])
+                        </div>
+                    }
+
                     @*</form>*@
                 }
 
@@ -143,6 +143,6 @@ htmlAttributes: new { @class = "btn btn-dark" })
             </div>
         </div>
     </div>
-
+    
 </body>
 </html>

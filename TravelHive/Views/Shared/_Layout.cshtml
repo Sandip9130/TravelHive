@@ -19,20 +19,30 @@
             <ul class="nav justify-content-center align-items-center">
                 <li class="nav-item">
                                             @Html.ActionLink(
-                        linkText: "Explore",
-                        actionName: "Index",
-                        controllerName: "Home",
-                        routeValues: null,
-                        htmlAttributes: new { @class = "nav-link"})
+linkText: "Explore",
+actionName: "Index",
+controllerName: "Home",
+routeValues: null,
+htmlAttributes: new { @class = "nav-link" })
 
                     @*<a class="nav-link" href="index.html">Explore</a>*@
                 </li>
                 <li class="nav-item">
                     <div class="d-flex flex-row align-items-center justify-content-center">
-                        <a href="@Url.Action("NewExperience", "Home")" class="nav-link d-flex align-items-center">
-                            <div class="bg-warning rounded-circle px-2 text-dark"><b>+</b></div>
-                            <span class="ms-2">New Experience</span>
-                        </a>
+                        @if (Session["authUser"] != null)
+                        {
+                            <a href="@Url.Action("NewExperience", "Home")" class="nav-link d-flex align-items-center">
+                                <div class="bg-warning rounded-circle px-2 text-dark"><b>+</b></div>
+                                <span class="ms-2">New Experience</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("login", "Account")" class="nav-link d-flex align-items-center">
+                                <div class="bg-warning rounded-circle px-2 text-dark"><b>+</b></div>
+                                <span class="ms-2">New Experience</span>
+                            </a>
+                        }
                     </div>
 
                     @*<div class="d-flex flex-row align-items-center justify-content-center">
@@ -46,12 +56,24 @@
         </div>*@
                 </li>
                 <li class="nav-item">
-                                        @Html.ActionLink(
+                    @if (Session["authUser"] != null)
+                    {
+                        @Html.ActionLink(
+                      linkText: "My Profile",
+                      actionName: "myProfile",
+                      controllerName: "Home",
+                      routeValues: null,
+                      htmlAttributes: new { @class = "nav-link" })
+                    }
+                    else
+                    {
+                                                @Html.ActionLink(
                         linkText: "My Profile",
-                        actionName: "myProfile",
-                        controllerName: "Home",
+                        actionName: "login",
+                        controllerName: "Account",
                         routeValues: null,
-                        htmlAttributes: new { @class = "nav-link"})
+                        htmlAttributes: new { @class = "nav-link" })
+                    }
 
                     @*<a class="nav-link active" aria-current="page" href="../Home/myProfile.cshtml">My Profile</a>*@
                 </li>
@@ -94,11 +116,10 @@ htmlAttributes: new { @class = "btn btn-outline-light" })
                     {
                         foreach (var user in usersList)
                         {
-                                <li>
+                                <li style="border-bottom: 1px solid gray; padding-bottom: 5%">
                                     <img src="@Url.Content(user.profile_photo)" alt="User 1">
                                     <div class="name">@user.first_name @user.last_name</div>
                                 </li>
-                            <hr>
                             
                         }
                     }
@@ -124,5 +145,41 @@ htmlAttributes: new { @class = "btn btn-outline-light" })
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the search input and the user list
+            const searchInput = document.querySelector(".search-bar input");
+            const userList = document.querySelector(".user-list");
+
+            // Event listener for input changes in the search bar
+            searchInput.addEventListener("input", function () {
+                // Get the search query and convert it to lowercase
+                const query = searchInput.value.toLowerCase();
+
+                // Get all user list items
+                const users = userList.querySelectorAll("li");
+
+                // Loop through all users and show/hide based on the search query
+                users.forEach(function (user) {
+                    // Find the user's name element within each list item
+                    const userName = user.querySelector(".name");
+
+                    if (userName) {
+                        // Get the text content and check if it matches the search query
+                        const nameText = userName.textContent.toLowerCase();
+                        if (nameText.includes(query)) {
+                            user.style.display = "flex"
+                            user.style.flexDirection = "row"; // Show user if it matches
+                        } else {
+                            user.style.display = "none"; // Hide user if it doesn't match
+                        }
+                    }
+                });
+            });
+        });
+
+    </script>
+
 </body>
 </html>

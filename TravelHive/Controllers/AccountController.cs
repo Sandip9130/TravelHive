@@ -22,7 +22,12 @@ namespace TravelHive.Controllers
         [HttpPost]
         public ActionResult login(User c)
         {
-            var cred = db.Users.Where(crd => crd.email == c.email).FirstOrDefault();   
+            var cred = db.Users.Where(crd => crd.email == c.email && crd.password == c.password).FirstOrDefault();   
+            if(cred != null)
+            {
+                Session["authUser"] = cred.user_Id;
+                return RedirectToAction("Index", "Home");
+            }   
             return View();
         }
 
@@ -59,7 +64,7 @@ namespace TravelHive.Controllers
                     if (a > 0)
                     {
                         ViewBag.insertMessage = "Data inserted successfully!";
-                        return RedirectToAction("Index");
+                        
                     }
                     else
                     {

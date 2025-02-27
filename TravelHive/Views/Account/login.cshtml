@@ -1,4 +1,4 @@
-﻿
+﻿@model TravelHive.Models.viewmodels.Login
 @{
     Layout = null;
 }
@@ -31,17 +31,17 @@
             </div>
             <hr />
             <div class="modal-body">
-                <form class="needs-validation" novalidate>
+                <form method="post" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Email address or Username</label>
-                        <input type="email" class="form-control mw-100" id="exampleFormControlInput1 validationCustom05" placeholder="name@example.com" required>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control mw-100", type = "email", placeholder = "E-mail", id = "validationCustom03", required = "required" } })
                         <div class="invalid-feedback">
                             Please provide a valid E-mail or Username.
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Pasasword</label>
-                        <input type="password" class="form-control mw-100" id="exampleFormControlInput2 validationCustom06" placeholder="password" required>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control mw-100", type = "password", placeholder = "Password", id = "validationCustom04", required = "required" } })
                         <div class="invalid-feedback">
                             Please provide a valid password.
                         </div>
